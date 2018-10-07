@@ -5,6 +5,7 @@ const Schema = mongoose.Schema;
 const ProfileSchema = new Schema({
   user: {
     type: Schema.Types.ObjectId,
+    // reference collection in the db to take name, email ,avatar
     ref: "users"
   },
   handle: {
