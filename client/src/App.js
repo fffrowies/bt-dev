@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { BrowserRouter, Route } from "react-router-dom";
 import { Provider } from "react-redux";
 import jwt_decode from "jwt-decode";
-
 import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
 import Landing from "./components/layout/Landing";
@@ -31,8 +30,8 @@ if (localStorage.jwtToken) {
     store.dispatch(logoutUser());
     // Clear Current profile
     store.dispatch(clearCurrentProfile());
-    // Redirect to login
-    window.location.href = "/login";
+    // // Redirect to login
+    // window.location.href = "/login";
   }
 }
 

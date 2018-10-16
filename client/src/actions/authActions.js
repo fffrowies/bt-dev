@@ -1,6 +1,5 @@
 import axios from "axios";
 import jwt_decode from "jwt-decode";
-
 import setAuthToken from "../utils/setAuthToken";
 import { GET_ERRORS, SET_CURRENT_USER } from "./types";
 
@@ -57,4 +56,6 @@ export const logoutUser = () => dispatch => {
   setAuthToken(false);
   // Set current user to {} wich will set isAuthenticated to false
   dispatch(setCurrentUser({}));
+  // Redirect to login
+  window.location.href = "/login";
 };

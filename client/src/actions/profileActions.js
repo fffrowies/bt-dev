@@ -1,5 +1,4 @@
 import axios from "axios";
-
 import { GET_PROFILE, PROFILE_LOADING, CLEAR_CURRENT_PROFILE } from "./types";
 
 // Get current profile

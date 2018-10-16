@@ -90,12 +90,17 @@ router.post("/login", (req, res) => {
       if (isMatch) {
         // Generate the token
         const payload = { id: user.id, name: user.name, avatar: user.avatar };
-        jwt.sign(payload, keys.secretOrKey, { expiresIn: 15 }, (err, token) => {
-          res.json({
-            success: true,
-            token: "Bearer " + token // Bearer is a protocol for tokens
-          });
-        });
+        jwt.sign(
+          payload,
+          keys.secretOrKey,
+          { expiresIn: 180 },
+          (err, token) => {
+            res.json({
+              success: true,
+              token: "Bearer " + token // Bearer is a protocol for tokens
+            });
+          }
+        );
       } else {
         errors.password = "Password incorrect";
         return res.status(400).json(errors);
