@@ -27,11 +27,11 @@ class Login extends Component {
     }
   }
 
-  onChangeHandler = e => {
+  handleOnChange = e => {
     this.setState({ [e.target.name]: e.target.value });
   };
 
-  onSubmitHandler = e => {
+  handleOnSubmit = e => {
     e.preventDefault();
 
     const userData = {
@@ -54,13 +54,13 @@ class Login extends Component {
               <p className="lead text-center">
                 Sign in to your DevConnector account
               </p>
-              <form noValidate onSubmit={this.onSubmitHandler}>
+              <form noValidate onSubmit={this.handleOnSubmit}>
                 <TextFieldGroup
                   placeholder="Email Address"
                   name="email"
                   type="email"
                   value={this.state.email}
-                  onChange={this.onChangeHandler}
+                  onChange={this.handleOnChange}
                   error={errors.email}
                 />
                 <TextFieldGroup
@@ -68,7 +68,7 @@ class Login extends Component {
                   name="password"
                   type="password"
                   value={this.state.password}
-                  onChange={this.onChangeHandler}
+                  onChange={this.handleOnChange}
                   error={errors.password}
                 />
                 <input

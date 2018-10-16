@@ -26,11 +26,11 @@ class Register extends Component {
     }
   }
 
-  onChangeHandler = e => {
+  handleOnChange = e => {
     this.setState({ [e.target.name]: e.target.value });
   };
 
-  onSubmitHandler = e => {
+  handleOnSubmit = e => {
     e.preventDefault();
 
     const newUser = {
@@ -55,12 +55,12 @@ class Register extends Component {
               <p className="lead text-center">
                 Create your DevConnector account
               </p>
-              <form noValidate onSubmit={this.onSubmitHandler}>
+              <form noValidate onSubmit={this.handleOnSubmit}>
                 <TextFieldGroup
                   placeholder="Name"
                   name="name"
                   value={this.state.name}
-                  onChange={this.onChangeHandler}
+                  onChange={this.handleOnChange}
                   error={errors.name}
                 />
                 <TextFieldGroup
@@ -68,7 +68,7 @@ class Register extends Component {
                   name="email"
                   type="email"
                   value={this.state.email}
-                  onChange={this.onChangeHandler}
+                  onChange={this.handleOnChange}
                   error={errors.email}
                   info="This site uses Gravatar so if you want a profile image, use
                   a Gravatar email"
@@ -78,7 +78,7 @@ class Register extends Component {
                   name="password"
                   type="password"
                   value={this.state.password}
-                  onChange={this.onChangeHandler}
+                  onChange={this.handleOnChange}
                   error={errors.password}
                 />
                 <TextFieldGroup
@@ -86,7 +86,7 @@ class Register extends Component {
                   name="password2"
                   type="password"
                   value={this.state.password2}
-                  onChange={this.onChangeHandler}
+                  onChange={this.handleOnChange}
                   error={errors.password2}
                 />
                 <input
