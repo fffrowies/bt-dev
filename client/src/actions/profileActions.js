@@ -1,11 +1,25 @@
 import axios from "axios";
 import {
   GET_PROFILE,
+  GET_PROFILES,
   PROFILE_LOADING,
   CLEAR_CURRENT_PROFILE,
   SET_CURRENT_USER,
   GET_ERRORS
 } from "./types";
+
+// Create Profile
+export const createProfile = (profileData, history) => dispatch => {
+  axios
+    .post("/api/profile", profileData)
+    .then(res => history.push("/dashboard"))
+    .catch(err =>
+      dispatch({
+        type: GET_ERRORS,
+        payload: err.response.data
+      })
+    );
+};
 
 // Get current profile
 export const getCurrentProfile = () => dispatch => {
@@ -26,15 +40,21 @@ export const getCurrentProfile = () => dispatch => {
     );
 };
 
-// Create Profile
-export const createProfile = (profileData, history) => dispatch => {
+// Get all profiles
+export const getProfiles = () => dispatch => {
+  dispatch(setProfileLoading());
   axios
-    .post("/api/profile", profileData)
-    .then(res => history.push("/dashboard"))
+    .get("/api/profile/all")
+    .then(res =>
+      dispatch({
+        type: GET_PROFILES,
+        payload: res.data
+      })
+    )
     .catch(err =>
       dispatch({
-        type: GET_ERRORS,
-        payload: err.response.data
+        type: GET_PROFILES,
+        payload: null
       })
     );
 };
